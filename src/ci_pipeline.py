@@ -1,14 +1,21 @@
 # ci_pipeline.py
 # This workflow is triggered by webhook
 
-def run_ci_pipeline(branch, commit_id):
+import subprocess
+from src.prepare import prepare
 
-    # prepare()
+def run_ci_pipeline(repo_url, branch, commit_id, logger):
 
-    # check_syntax()
+    build_success = True
 
-    # test()
+    try:
+        prepare(repo_url, logger)
+
+        # check_syntax()
+
+        # test()
+
+    except subprocess.CalledProcessError:
+        build_success = False
 
     # notify()
-    
-    pass
