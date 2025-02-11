@@ -2,3 +2,4 @@
 __pycache__/
 tmp/
 src/auth.env
+.pytest_cache/
