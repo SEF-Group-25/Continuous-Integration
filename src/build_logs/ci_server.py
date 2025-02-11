@@ -33,7 +33,7 @@ def get_build_history():
 @app.route('/history/<commit_id>', methods=['GET'])
 def get_build_details(commit_id):
     history = load_build_history()
-    build = next(build for build in history if build["commit_id"] == commit_id)
+    build = next((build for build in history if build["commit_id"] == commit_id), None)
 
     if build:
         return jsonify(build)
