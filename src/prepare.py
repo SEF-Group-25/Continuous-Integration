@@ -25,3 +25,7 @@ def install_dependencies():
 # used for test
 if __name__ == "__main__":
     prepare("https://github.com/SEF-Group-25/Launch-Interceptor-Program.git", "main", "9c08d7e", None)
+    from src.log import logs
+    import json
+    with open("logs.json", "w") as f:
+        json.dump(logs, f, indent=4)
