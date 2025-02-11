@@ -24,6 +24,22 @@ def handle_request():
 
     return jsonify({"message": "CI job processed", "commit_id": commit_id, "status": status})
 
+@app.route('/history', methods=['GET'])
+def get_build_history():
+    """Return list of all past builds."""
+    history = load_build_history()
+    return jsonify(history)
+
+@app.route('/history/<commit_id>', methods=['GET'])
+def get_build_details(commit_id):
+    history = load_build_history()
+    build = next(build for build in history if build["commit_id"] == commit_id)
+
+    if build:
+        return jsonify(build)
+    return jsonify({"error": "Build not found"}), 404
+
+
 def load_build_history():
     """Load build history from JSON file, or return an empty list if it doesn't exist."""
     if os.path.exists(HISTORY_FILE):
