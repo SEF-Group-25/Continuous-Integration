@@ -5,3 +5,4 @@ src/auth.env
 .pytest_cache/
 token.txt
 .DS_Store
+.idea/
