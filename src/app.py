@@ -19,6 +19,9 @@ ngrok.set_auth_token(ngrok_authtoken)
 
 app = Flask(__name__)
 
+public_url = ngrok.connect(5000).public_url
+print(f"\n Ngrok Tunnel URL: {public_url}\n")
+
 @app.route("/webhook", methods=["POST"])
 def webhook():
     event_type = request.headers.get("X-GitHub-Event", "unknown")
