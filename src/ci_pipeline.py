@@ -3,9 +3,10 @@
 
 import subprocess
 from src.prepare import prepare
+from src.notify import set_commit_status, discord_notify
+
 
 def run_ci_pipeline(repo_url, branch, commit_id, logger):
-
     build_success = True
 
     try:
@@ -18,7 +19,14 @@ def run_ci_pipeline(repo_url, branch, commit_id, logger):
     except subprocess.CalledProcessError as e:
         build_success = False
 
-    # notify()
+    if build_success == False:
+        set_commit_status(commit_id, "failure")
+        discord_notify(commit_id, "Failure")
+    else:
+        set_commit_status(commit_id, "success")
+        discord_notify(commit_id, "Success")
+
+
 
 # used for test
 # should be deleted
