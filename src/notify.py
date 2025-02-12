@@ -1,19 +1,30 @@
 import requests
 import os
 
-
+"""
 def read_tokens():
-    with open("../token.txt", "r") as file:
-        return [line.strip() for line in file.readlines()]
+    try:
+        with open("../token.txt", "r") as file:
+            return [line.strip() for line in file.readlines()]
+    except:
+        with open("token.txt", "r") as file:
+            return [line.strip() for line in file.readlines()]
 
+try:
+    COMMIT_TOKEN = read_tokens()[0]
 
-GITHUB_TOKEN = read_tokens()[0]  # os.getenv("GITHUB_TOKEN")  # Use export GITHUB_TOKEN=your_token in terminal
+    # Discord Webhook Info
+    DISCORD_WEBHOOK_URL = read_tokens()[1]
 
-# Discord Webhook Info
-DISCORD_WEBHOOK_URL = read_tokens()[1]
+except:
+    COMMIT_TOKEN = os.getenv("COMMIT_TOKEN") # For github
+    DISCORD_WEBHOOK_URL = os.getenv("DISCORD_WEBHOOK_URL")
+"""
 
+COMMIT_TOKEN = os.getenv("COMMIT_TOKEN") # For github
+DISCORD_WEBHOOK_URL = os.getenv("DISCORD_WEBHOOK_URL")
 
-def set_commit_status(commit_sha, state="success", description="CI", REPO_OWNER="SEF-Group-25", REPO_NAME="Continuous-Integration", TOKEN=GITHUB_TOKEN):
+def set_commit_status(commit_sha, state="success", description="CI", REPO_OWNER="SEF-Group-25", REPO_NAME="Continuous-Integration", TOKEN=COMMIT_TOKEN):
     url = f"https://api.github.com/repos/{REPO_OWNER}/{REPO_NAME}/statuses/{commit_sha}"
 
     headers = {

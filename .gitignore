@@ -4,4 +4,5 @@ tmp/
 src/auth.env
 token.txt
 .DS_Store
+.idea/
 .pytest_cache/
