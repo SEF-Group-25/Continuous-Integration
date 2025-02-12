@@ -14,8 +14,8 @@ def run_ci_pipeline(repo_url, branch, commit_id, logger):
     status = "success"
 
     try:
-        prepare(repo_url, branch, commit_id)
-        check_syntax(TMP_DIR)
+        prepare(repo_url, branch, commit_id, logger)
+        check_syntax(logger, TMP_DIR)
         run_test()
 
     except Exception as e:
@@ -25,10 +25,10 @@ def run_ci_pipeline(repo_url, branch, commit_id, logger):
     if not build_success:
         status = f"fail_{error_type}"
 
-    # notify()
-    
     return build_success
+    # save_build(commit_id, status, get_logs())
 
+    # notify()
 
 # used for test
 # should be deleted
