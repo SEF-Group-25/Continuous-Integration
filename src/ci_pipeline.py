@@ -7,6 +7,8 @@ from config import TMP_DIR
 from src.prepare import prepare
 from src.check_syntax import check_syntax
 from src.test import run_test
+from src.notify import set_commit_status, discord_notify
+
 
 def run_ci_pipeline(repo_url, branch, commit_id):
 
@@ -25,7 +27,14 @@ def run_ci_pipeline(repo_url, branch, commit_id):
     if not build_success:
         status = f"fail_{error_type}"
 
-    # notify()
+    if build_success == False:
+        set_commit_status(commit_id, "failure")
+        discord_notify(commit_id, "Failure")
+    else:
+        set_commit_status(commit_id, "success")
+        discord_notify(commit_id, "Success")
+
+
     
     return build_success
 
@@ -33,4 +42,4 @@ def run_ci_pipeline(repo_url, branch, commit_id):
 # used for test
 # should be deleted
 if __name__ == "__main__":
-    run_ci_pipeline("https://github.com/SEF-Group-25/Launch-Interceptor-Program.git", "main", "f995103")
+    run_ci_pipeline("https://github.com/SEF-Group-25/Launch-Interceptor-Program.git", "main", "f995103", None)
