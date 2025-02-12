@@ -21,8 +21,6 @@ curl -X POST "https://[url].ngrok-free.app/webhook" -H "Content-Type: applicatio
 
 # Build History Storage for CI Server (P7)
 
-## Overview
-
 This feature implements **build history storage** for the CI server. It ensures that every processed build is logged, allowing users to track past builds, their statuses, and related metadata.
 
 ## Endpoints
