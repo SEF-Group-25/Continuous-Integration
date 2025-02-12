@@ -8,7 +8,7 @@ from src.prepare import prepare
 from src.check_syntax import check_syntax
 from src.test import run_test
 
-def run_ci_pipeline(repo_url, branch, commit_id, logger):
+def run_ci_pipeline(repo_url, branch, commit_id):
 
     build_success = True
     status = "success"
