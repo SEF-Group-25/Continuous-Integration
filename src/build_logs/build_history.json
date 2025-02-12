@@ -1,8 +1,14 @@
 [
     {
         "commit_id": "test123",
-        "status": "success",
-        "timestamp": "2025-02-10T01:53:24.630884",
-        "logs": "Mock CI process for commit test123. Status: success."
+        "status": "failure",
+        "timestamp": "2025-02-12T19:54:27.782063",
+        "logs": []
+    },
+    {
+        "commit_id": "test123123",
+        "status": "failure",
+        "timestamp": "2025-02-12T19:55:28.984646",
+        "logs": []
     }
 ]
