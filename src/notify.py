@@ -1,7 +1,7 @@
 import requests
 import os
 
-
+"""
 def read_tokens():
     try:
         with open("../token.txt", "r") as file:
@@ -19,8 +19,10 @@ try:
 except:
     COMMIT_TOKEN = os.getenv("COMMIT_TOKEN") # For github
     DISCORD_WEBHOOK_URL = os.getenv("DISCORD_WEBHOOK_URL")
+"""
 
-
+COMMIT_TOKEN = os.getenv("COMMIT_TOKEN") # For github
+DISCORD_WEBHOOK_URL = os.getenv("DISCORD_WEBHOOK_URL")
 
 def set_commit_status(commit_sha, state="success", description="CI", REPO_OWNER="SEF-Group-25", REPO_NAME="Continuous-Integration", TOKEN=COMMIT_TOKEN):
     url = f"https://api.github.com/repos/{REPO_OWNER}/{REPO_NAME}/statuses/{commit_sha}"
