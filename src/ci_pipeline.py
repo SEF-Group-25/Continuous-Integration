@@ -5,11 +5,11 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 from config import TMP_DIR
 from src.prepare import prepare
+from src.notify import set_commit_status, discord_notify
 from src.check_syntax import check_syntax
 from src.test import run_test
 
-def run_ci_pipeline(repo_url, branch, commit_id):
-
+def run_ci_pipeline(repo_url, branch, commit_id, logger):
     build_success = True
     status = "success"
 
@@ -29,8 +29,15 @@ def run_ci_pipeline(repo_url, branch, commit_id):
     
     return build_success
 
+    if build_success == False:
+        set_commit_status(commit_id, "failure")
+        discord_notify(commit_id, "Failure")
+    else:
+        set_commit_status(commit_id, "success")
+        discord_notify(commit_id, "Success")
 
 # used for test
 # should be deleted
 if __name__ == "__main__":
     run_ci_pipeline("https://github.com/SEF-Group-25/Launch-Interceptor-Program.git", "main", "f995103")
+    

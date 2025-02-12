@@ -2,4 +2,6 @@
 __pycache__/
 tmp/
 src/auth.env
+token.txt
+.DS_Store
 .pytest_cache/
