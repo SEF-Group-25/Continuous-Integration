@@ -2,3 +2,4 @@ Flask
 pyngrok
 python-dotenv
 pytest
+requests
