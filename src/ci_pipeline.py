@@ -6,6 +6,7 @@ from config import TMP_DIR
 from src.prepare import prepare
 from src.check_syntax import check_syntax
 from src.test import run_test
+from src.log import get_logs
 
 def run_ci_pipeline(repo_url, branch, commit_id, logger):
 
@@ -24,6 +25,7 @@ def run_ci_pipeline(repo_url, branch, commit_id, logger):
         build_success = False
         logger.error(f"Build error: {e}")
 
+    # save_build(commit_id, status, get_logs())
 
     # notify()
 
