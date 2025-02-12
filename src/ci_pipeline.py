@@ -1,5 +1,7 @@
 # ci_pipeline.py
 # This workflow is triggered by webhook
+import os, sys
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 import subprocess
 from config import TMP_DIR
@@ -14,9 +16,7 @@ def run_ci_pipeline(repo_url, branch, commit_id, logger):
 
     try:
         prepare(repo_url, branch, commit_id, logger)
-
         check_syntax(logger, TMP_DIR)
-
         run_test()
 
     except subprocess.CalledProcessError as e:
@@ -25,6 +25,7 @@ def run_ci_pipeline(repo_url, branch, commit_id, logger):
         build_success = False
         logger.error(f"Build error: {e}")
 
+    return build_success
     # save_build(commit_id, status, get_logs())
 
     # notify()
