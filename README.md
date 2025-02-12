@@ -19,6 +19,9 @@ Webhook should now be working, you can check the "Recent Deliveries" tab to see 
 curl -X POST "https://[url].ngrok-free.app/webhook" -H "Content-Type: application/json" -H "X-GitHub-Event: push" -d "{\"ref\": \"refs/heads/assessment\", \"after\": \"commit_id_example\"}"
 "
 
+# Environment Variables
+Make sure to do export COMMIT_TOKEN="(GitHub token with repo:status and public_repo permissions)" and export DISCORD_WEBHOOK_URL="(Your Discord Webhook)".
+
 # Build History Storage for CI Server (P7)
 
 This feature implements **build history storage** for the CI server. It ensures that every processed build is logged, allowing users to track past builds, their statuses, and related metadata.
