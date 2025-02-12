@@ -49,7 +49,7 @@ def webhook():
         
         app.logger.info(f"Received push event for repo: {repo_url}, branch: {branch}, commit: {commit_id}")
         
-        build_success = run_ci_pipeline(repo_url, branch, commit_id)
+        build_success = run_ci_pipeline(repo_url, branch, commit_id, app.logger)
 
         status = "success" if build_success else "failure"
 
