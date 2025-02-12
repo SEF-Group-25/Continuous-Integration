@@ -7,9 +7,8 @@ from config import TMP_DIR
 from src.prepare import prepare
 from src.check_syntax import check_syntax
 from src.test import run_test
-from src.log import get_logs
 
-def run_ci_pipeline(repo_url, branch, commit_id):
+def run_ci_pipeline(repo_url, branch, commit_id, logger):
 
     build_success = True
     status = "success"
