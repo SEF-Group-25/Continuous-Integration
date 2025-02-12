@@ -4,3 +4,4 @@ tmp/
 src/auth.env
 token.txt
 .DS_Store
+.idea/
