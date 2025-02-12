@@ -1,18 +1,23 @@
 import os
+import subprocess
 import shutil
 from src.utils import run_command
 from config import TMP_DIR
 
 # This function prepares environment for build
-def prepare(repo_url, branch, commit_id, logger):
+def prepare(repo_url, branch, commit_id):
 
     if os.path.exists(TMP_DIR):
         shutil.rmtree(TMP_DIR)
     os.makedirs(TMP_DIR, exist_ok=False)
 
-    clone_repo(repo_url, branch, commit_id)
+    try:
+        clone_repo(repo_url, branch, commit_id)
 
-    install_dependencies()
+        install_dependencies()
+    
+    except subprocess.CalledProcessError as e:
+        raise Exception(f"prepare: Fail at command \'{e.cmd}\'")
 
 
 def clone_repo(repo_url, branch, commit_id):

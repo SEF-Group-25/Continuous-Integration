@@ -1,6 +1,5 @@
 import py_compile
 import os
-from utils import run_command
 
 
 syntax_checkers = {
@@ -12,7 +11,7 @@ syntax_checkers = {
     #".js": lambda file_path: run_command(f"jshint {file_path}", os.path.dirname(file_path))'''
 }
 
-def check_syntax(logger, directory):
+def check_syntax(directory):
 
     for root, dirs, files in os.walk(directory):
 
@@ -27,7 +26,7 @@ def check_syntax(logger, directory):
                     checker(file_path)
 
             except Exception as e:
-                raise Exception(f"Syntax error in {file_path}: {e}")
+                raise Exception(f"check_syntax: Syntax error in {file_path}: {e}")
 
 
 
