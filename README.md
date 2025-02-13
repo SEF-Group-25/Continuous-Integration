@@ -55,6 +55,9 @@ Make sure to do export COMMIT_TOKEN="(GitHub token with repo:status and public_r
 
 # Build History Storage for CI Server (P7)
 
+Build history is available at: https://c5ce-130-229-154-234.ngrok-free.app/history.
+**Note that this url will change every time the program is run.**
+
 This feature implements **build history storage** for the CI server. It ensures that every processed build is logged, allowing users to track past builds, their statuses, and related metadata.
 
 ## Endpoints
