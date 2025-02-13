@@ -28,6 +28,9 @@ If any of the tests fails, there will be an exception. And the program will catc
 # Environment Variables
 Make sure to do export COMMIT_TOKEN="(GitHub token with repo:status and public_repo permissions)" and export DISCORD_WEBHOOK_URL="(Your Discord Webhook)".
 
+# Environment Variables
+Make sure to do export COMMIT_TOKEN="(GitHub token with repo:status and public_repo permissions)" and export DISCORD_WEBHOOK_URL="(Your Discord Webhook)".
+
 # Build History Storage for CI Server (P7)
 
 This feature implements **build history storage** for the CI server. It ensures that every processed build is logged, allowing users to track past builds, their statuses, and related metadata.

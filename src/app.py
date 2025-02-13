@@ -1,10 +1,10 @@
 import os
 from flask import Flask, request, jsonify
-from ci_pipeline import run_ci_pipeline
-from build_logs.ci_server import save_build, load_build_history
+from .ci_pipeline import run_ci_pipeline
+from .build_logs.ci_server import save_build, load_build_history
 from pyngrok import ngrok
 from dotenv import load_dotenv
-from log import get_logs
+from .log import get_logs
 
 dotenv_path = os.path.join(os.path.dirname(__file__), "auth.env")
 load_dotenv(dotenv_path)
@@ -37,10 +37,11 @@ def webhook():
     if event_type == "push":
         # GitHub push payload should include "ref" and "after"
         ref = payload.get("ref", "")
-        if ref:
-            branch = ref.split("/")[-1]
+        if ref.startswith("refs/heads/"):
+            branch = ref.replace("refs/heads/", "")
         else:
-            branch = None
+            branch = ref
+
         commit_id = payload.get("after", None)
         repo_url = payload.get("repository", {}).get("html_url", "") + ".git"
 

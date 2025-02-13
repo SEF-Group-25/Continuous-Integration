@@ -8,6 +8,8 @@ from src.prepare import prepare
 from src.notify import set_commit_status, discord_notify
 from src.check_syntax import check_syntax
 from src.test import run_test
+from src.notify import set_commit_status, discord_notify
+
 
 def run_ci_pipeline(repo_url, branch, commit_id, logger):
     build_success = True
@@ -25,10 +27,6 @@ def run_ci_pipeline(repo_url, branch, commit_id, logger):
     if not build_success:
         status = f"fail_{error_type}"
 
-    # notify()
-    
-    return build_success
-
     if build_success == False:
         set_commit_status(commit_id, "failure")
         discord_notify(commit_id, "Failure")
@@ -36,8 +34,9 @@ def run_ci_pipeline(repo_url, branch, commit_id, logger):
         set_commit_status(commit_id, "success")
         discord_notify(commit_id, "Success")
 
+    return build_success
+
 # used for test
 # should be deleted
 if __name__ == "__main__":
     run_ci_pipeline("https://github.com/SEF-Group-25/Launch-Interceptor-Program.git", "main", "f995103")
-    
