@@ -8,7 +8,7 @@ from config import TMP_DIR
 
 def run_test():
     try:
-        run_command("pytest", TMP_DIR)
+        run_command("pytest tests/", TMP_DIR)
 
     except subprocess.CalledProcessError:
         raise Exception("test: Test fails, check the logs")

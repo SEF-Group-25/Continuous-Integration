@@ -33,4 +33,4 @@ jobs:
           COMMIT_TOKEN: ${{ secrets.COMMIT_TOKEN }}
           DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
         run: |
-          pytest
+          pytest tests/

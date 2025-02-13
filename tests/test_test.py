@@ -10,11 +10,11 @@ def test_run_test_success():
         except Exception:
             pytest.fail("run_test() raised Exception unexpectedly!")
 
-        mock_run_command.assert_called_once_with("pytest", TMP_DIR)
+        mock_run_command.assert_called_once_with("pytest tests/", TMP_DIR)
 
 def test_run_test_failure():
-    with patch("src.test.run_command", side_effect=subprocess.CalledProcessError(1, "pytest")) as mock_run_command:
+    with patch("src.test.run_command", side_effect=subprocess.CalledProcessError(1, "pytest tests/")) as mock_run_command:
         with pytest.raises(Exception, match="test: Test fails, check the logs"):
             run_test()
 
-        mock_run_command.assert_called_once_with("pytest", TMP_DIR)
+        mock_run_command.assert_called_once_with("pytest tests/", TMP_DIR)
