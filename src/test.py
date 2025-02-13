@@ -7,9 +7,7 @@ from src.utils import run_command
 from config import TMP_DIR
 
 def run_test():
-    """
-    Run pytest to execute test cases under /tests
-    The result of pytest will be stored in the log
+    """Run pytest command to execute test cases under /tests. Raise an exception if fails.
     """
 
     try:
