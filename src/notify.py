@@ -25,6 +25,19 @@ COMMIT_TOKEN = os.getenv("COMMIT_TOKEN") # For github
 DISCORD_WEBHOOK_URL = os.getenv("DISCORD_WEBHOOK_URL")
 
 def set_commit_status(commit_sha, state="success", description="CI", REPO_OWNER="SEF-Group-25", REPO_NAME="Continuous-Integration", TOKEN=COMMIT_TOKEN):
+    """Sets the commit status of the specified commit to the specified state.
+
+        Args:
+            commit_sha (str): The specified commit.
+            state (str): The result to set, can be "success", "failure", "pending", or "error".
+            description (str): Description of the status, viewable on GitHub.
+            REPO_OWNER (str): The person or organization that owns the repo.
+            REPO_NAME (str): Name of the repo.
+            TOKEN (str): Your GitHub token with repo:status and public_repo permissions.
+
+        Returns:
+            int: Status code received from GitHun.
+        """
     url = f"https://api.github.com/repos/{REPO_OWNER}/{REPO_NAME}/statuses/{commit_sha}"
 
     headers = {
@@ -50,6 +63,13 @@ def set_commit_status(commit_sha, state="success", description="CI", REPO_OWNER=
 
 
 def discord_notify(commit_sha, result, webhook=DISCORD_WEBHOOK_URL):
+    """Sends a discord message to a specified webhook, informing about the result of a specific commit.
+
+            Args:
+                commit_sha (str): The specified commit.
+                result (str): The status to be displayed.
+                webhook (str): Webhook for the specific channel where the message will be received.
+            """
     data = {
         "content": f"Commit: {commit_sha}\nStatus: {result}",
         "username": "CI Notifier",
