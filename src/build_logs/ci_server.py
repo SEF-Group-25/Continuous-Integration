@@ -8,7 +8,14 @@ HISTORY_FILE = "build_history.json"
 
 @app.route('/', methods=['POST'])
 def handle_request():
-    """Webhook endpoint to trigger CI."""
+    """Webhook endpoint to trigger CI.
+
+    Expects a JSON payload with a 'head_commit' key containing commit information.
+
+    Returns:
+        A JSON response containing a message, commit ID, and build status.
+        If the payload is invalid, returns a plain text error message with HTTP status 400.
+    """
     data = request.get_json()
     
     if not data or 'head_commit' not in data:
@@ -26,12 +33,26 @@ def handle_request():
 
 @app.route('/history', methods=['GET'])
 def get_build_history():
-    """Return list of all past builds."""
+    """Return list of all past builds.
+
+    Retrieves the entire build history from a JSON file.
+
+    Returns:
+        A JSON response containing a list of build records.
+    """
     history = load_build_history()
     return jsonify(history)
 
 @app.route('/history/<commit_id>', methods=['GET'])
 def get_build_details(commit_id):
+    """Retrieve detailed build information for a given commit.
+
+    Args:
+        commit_id (str): The commit identifier to look up in the build history.
+
+    Returns:
+        A JSON response with the build details if found, or an error message with HTTP status 404 if not found.
+    """
     history = load_build_history()
     build = next((build for build in history if build["commit_id"] == commit_id), None)
 
@@ -41,7 +62,11 @@ def get_build_details(commit_id):
 
 
 def load_build_history():
-    """Load build history from JSON file, or return an empty list if it doesn't exist."""
+    """Load build history from a JSON file, or return an empty list if the file does not exist or is invalid.
+
+    Returns:
+        list: A list of build records.
+    """
     if os.path.exists(HISTORY_FILE):
         with open(HISTORY_FILE, "r") as f:
             try:
@@ -51,7 +76,15 @@ def load_build_history():
     return []
 
 def save_build(commit_id, status, logs):
-    """Save a build result, ensuring only one build per commit (overwrite old build)."""
+    """Save a build result, ensuring only one build per commit.
+
+    Updates the build history with the new build data and writes it to a JSON file.
+
+    Args:
+        commit_id (str): The commit identifier associated with the build.
+        status (str): The build status (e.g., "success" or "failure").
+        logs (str): Log details from the CI process.
+    """
     history = load_build_history()
 
     history = [b for b in history if b["commit_id"] != commit_id]
