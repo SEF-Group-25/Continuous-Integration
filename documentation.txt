@@ -1,0 +1,101 @@
+app.py:
+def webhook():
+    
+    """Respond to GitHub webhook events by triggering the CI pipeline.
+    Args:
+        None, but expects a JSON payload from GitHub.
+    Returns:
+        JSON response with a message and status code.
+    """
+
+check_syntax.py:
+def check_syntax(directory):
+    """Goes through all files in the directory and checks their syntax by trying to compile it or run language-specific syntax linters (as specified in syntax_checkers).
+
+    Args:
+        directory (str): The specified commit.
+
+
+    Returns:
+        Nothing. Raises an exception if a syntax error is found
+    """
+
+ci_pipeline.py:
+def run_ci_pipeline(repo_url, branch, commit_id):
+    """Run the build pipeline for a specific commit of the repo
+    
+        Args：
+            repo_url (str): URL of the repo.
+            branch (str): The branch to be built.
+            commit_id (str): SHA of the commit.
+
+        Returns:
+            bool: True if the build is successful.
+    """
+
+log.py:
+def log_command_result(command, result):
+    """Log the result of the executed command, stored in a list
+    
+        Args:
+            command (str): The executed command
+            result (CompletedProcess[str]): Return value of subprocess.run
+    """
+
+notify.py:
+def set_commit_status(commit_sha, state="success", description="CI", REPO_OWNER="SEF-Group-25", REPO_NAME="Continuous-Integration", TOKEN=COMMIT_TOKEN):
+    """Sets the commit status of the specified commit to the specified state.
+
+        Args:
+            commit_sha (str): The specified commit.
+            state (str): The result to set, can be "success", "failure", "pending", or "error".
+            description (str): Description of the status, viewable on GitHub.
+            REPO_OWNER (str): The person or organization that owns the repo.
+            REPO_NAME (str): Name of the repo.
+            TOKEN (str): Your GitHub token with repo:status and public_repo permissions.
+
+        Returns:
+            int: Status code received from GitHun.
+        """
+
+def discord_notify(commit_sha, result, webhook=DISCORD_WEBHOOK_URL):
+    """Sends a discord message to a specified webhook, informing about the result of a specific commit.
+
+            Args:
+                commit_sha (str): The specified commit.
+                result (str): The status to be displayed.
+                webhook (str): Webhook for the specific channel where the message will be received.
+            """
+
+prepare.py:
+def prepare(repo_url, branch, commit_id):
+    """Prepares the repo and dependencies for a specific commit of the repo. Raise an exception if fails.
+
+        Args:
+            repo_url (str): URL of the repo.
+            branch (str): The branch to be built.
+            commit_id (str): SHA of the commit.
+    """
+
+test.py:
+def run_test():
+    """Run pytest command to execute test cases under /tests. Raise an exception if fails.
+    """
+
+utils.py:
+def run_command(command, run_dir=""):
+    """Run the command under specific directory, the result of run will be logged. 
+    Raise a subprocess.CalledProcessError if the command fails.
+
+        Args:
+            command (str): The command to be executed.
+            run_dir (str): The directory location where the command is executed
+    """
+
+
+
+
+
+
+
+
