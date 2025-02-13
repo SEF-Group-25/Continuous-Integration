@@ -12,17 +12,17 @@ syntax_checkers = {
 }
 
 def check_syntax(directory):
-        """Goes through all files in the directory and checks their syntax by trying to compile it or run language-specific syntax linters (as specified in syntax_checkers).
+    """Goes through all files in the directory and checks their syntax by trying to compile it or run language-specific syntax linters (as specified in syntax_checkers).
 
-        Args:
-            directory (str): The specified commit.
+    Args:
+        directory (str): The specified commit.
 
 
-        Returns:
-            Nothing. Raises an exception if a syntax error is found
-        """
+    Returns:
+        Nothing. Raises an exception if a syntax error is found
+    """
 
-for root, dirs, files in os.walk(directory):
+    for root, dirs, files in os.walk(directory):
 
         for file in files:
             file_path = os.path.join(root, file)

@@ -6,21 +6,7 @@ from pyngrok import ngrok
 from dotenv import load_dotenv
 from src.log import get_logs
 
-dotenv_path = os.path.join(os.path.dirname(__file__), "auth.env")
-load_dotenv(dotenv_path)
-
-# load NGROK_AUTHTOKEN 
-ngrok_authtoken = os.getenv("NGROK_AUTHTOKEN")
-
-if not ngrok_authtoken:
-    raise ValueError("NGROK_AUTHTOKEN environment variable not set.")
-
-ngrok.set_auth_token(ngrok_authtoken)
-
 app = Flask(__name__)
-
-public_url = ngrok.connect(5000).public_url
-print(f"\n Ngrok Tunnel URL: {public_url}\n")
 
 @app.route("/webhook", methods=["POST"])
 def webhook():
@@ -85,4 +71,18 @@ def history_details(commit_id):
     return jsonify({"error": "Build not found"}), 404
 
 if __name__ == "__main__":
+
+    dotenv_path = os.path.join(os.path.dirname(__file__), "auth.env")
+    load_dotenv(dotenv_path)
+
+    # load NGROK_AUTHTOKEN 
+    ngrok_authtoken = os.getenv("NGROK_AUTHTOKEN")
+
+    if not ngrok_authtoken:
+        raise ValueError("NGROK_AUTHTOKEN environment variable not set.")
+
+    ngrok.set_auth_token(ngrok_authtoken)
+
+    public_url = ngrok.connect(5000).public_url
+    print(f"\n Ngrok Tunnel URL: {public_url}\n")
     app.run(host="0.0.0.0", port=5000)

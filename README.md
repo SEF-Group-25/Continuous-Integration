@@ -44,6 +44,14 @@ Webhook should now be working, you can check the "Recent Deliveries" tab to see 
 
 If you do everything right, the ci server will receive the ping message from GitHub. Then the server is ready to build the coming push.
 
+# API documentation
+
+Once you configure the server correctly, you can set up pydoc using:
+```bash
+% python -m pydoc -p 1234
+```
+Then open `http://127.0.0.1:1234/src.html` in the brower to read the API document.
+
 # Executing the automated tests (P2)
 
 The tests of the group project are based on Pytest. To implement the execution of test, the program runs shell command `pytest` in the root directory of the repository, which will automatically search the test cases and execute. 
