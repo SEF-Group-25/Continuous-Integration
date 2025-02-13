@@ -1,0 +1,65 @@
+<!DOCTYPE>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Pydoc: module src.notify</title>
+<link rel="stylesheet" type="text/css" href="pydoc_data/_pydoc.css"></head><body>
+            <div style='float:left'>
+                Python 3.12.7 [main, GCC 11.2.0]<br>Linux-5.15.167.4-microsoft-standard-WSL2-x86_64-with-glibc2.35
+            </div>
+            <div style='float:right'>
+                <div style='text-align:center'>
+                  <a href="index.html">Module Index</a>
+                  : <a href="topics.html">Topics</a>
+                  : <a href="keywords.html">Keywords</a>
+                </div>
+                <div>
+                    <form action="get" style='display:inline;'>
+                      <input type=text name=key size=15>
+                      <input type=submit value="Get">
+                    </form>&nbsp;
+                    <form action="search" style='display:inline;'>
+                      <input type=text name=key size=15>
+                      <input type=submit value="Search">
+                    </form>
+                </div>
+            </div>
+            <div style="clear:both;padding-top:.5em;">
+<table class="heading">
+<tr class="heading-text decor">
+<td class="title">&nbsp;<br><strong class="title"><a href="src.html" class="white">src</a>.notify</strong></td>
+<td class="extra"><a href=".">index</a><br><a href="file:/home/tsx/SEfund/Continuous-Integration/src/notify.py">/home/tsx/SEfund/Continuous-Integration/src/notify.py</a></td></tr></table>
+    <p></p>
+<p>
+<table class="section">
+<tr class="decor pkg-content-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Modules</strong></td></tr>
+    
+<tr><td class="decor pkg-content-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><table><tr><td class="multicolumn"><a href="os.html">os</a><br>
+</td><td class="multicolumn"><a href="requests.html">requests</a><br>
+</td><td class="multicolumn"></td><td class="multicolumn"></td></tr></table></td></tr></table><p>
+<table class="section">
+<tr class="decor functions-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Functions</strong></td></tr>
+    
+<tr><td class="decor functions-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><dl><dt><a name="-discord_notify"><strong>discord_notify</strong></a>(commit_sha, result, webhook='')</dt><dd><span class="code">Sends&nbsp;a&nbsp;discord&nbsp;message&nbsp;to&nbsp;a&nbsp;specified&nbsp;webhook,&nbsp;informing&nbsp;about&nbsp;the&nbsp;result&nbsp;of&nbsp;a&nbsp;specific&nbsp;commit.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;commit_sha&nbsp;(str):&nbsp;The&nbsp;specified&nbsp;commit.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;result&nbsp;(str):&nbsp;The&nbsp;status&nbsp;to&nbsp;be&nbsp;displayed.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;webhook&nbsp;(str):&nbsp;Webhook&nbsp;for&nbsp;the&nbsp;specific&nbsp;channel&nbsp;where&nbsp;the&nbsp;message&nbsp;will&nbsp;be&nbsp;received.</span></dd></dl>
+ <dl><dt><a name="-set_commit_status"><strong>set_commit_status</strong></a>(commit_sha, state='success', description='CI', REPO_OWNER='SEF-Group-25', REPO_NAME='Continuous-Integration', TOKEN='')</dt><dd><span class="code">Sets&nbsp;the&nbsp;commit&nbsp;status&nbsp;of&nbsp;the&nbsp;specified&nbsp;commit&nbsp;to&nbsp;the&nbsp;specified&nbsp;state.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;commit_sha&nbsp;(str):&nbsp;The&nbsp;specified&nbsp;commit.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;state&nbsp;(str):&nbsp;The&nbsp;result&nbsp;to&nbsp;set,&nbsp;can&nbsp;be&nbsp;"success",&nbsp;"failure",&nbsp;"pending",&nbsp;or&nbsp;"error".<br>
+&nbsp;&nbsp;&nbsp;&nbsp;description&nbsp;(str):&nbsp;Description&nbsp;of&nbsp;the&nbsp;status,&nbsp;viewable&nbsp;on&nbsp;GitHub.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;REPO_OWNER&nbsp;(str):&nbsp;The&nbsp;person&nbsp;or&nbsp;organization&nbsp;that&nbsp;owns&nbsp;the&nbsp;repo.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;REPO_NAME&nbsp;(str):&nbsp;Name&nbsp;of&nbsp;the&nbsp;repo.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;TOKEN&nbsp;(str):&nbsp;Your&nbsp;GitHub&nbsp;token&nbsp;with&nbsp;repo:status&nbsp;and&nbsp;public_repo&nbsp;permissions.<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;int:&nbsp;Status&nbsp;code&nbsp;received&nbsp;from&nbsp;GitHun.</span></dd></dl>
+</td></tr></table><p>

@@ -46,7 +46,10 @@ If you do everything right, the ci server will receive the ping message from Git
 
 # API documentation
 
-Once you configure the server correctly, you can set up pydoc using:
+To read API document, just open `/doc/src.html` in the browser.
+
+Or you can also set up the pydoc server. Once you configure the server correctly, you can use:
+
 ```bash
 % python -m pydoc -p 1234
 ```

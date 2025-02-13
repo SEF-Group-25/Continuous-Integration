@@ -1,0 +1,80 @@
+<!DOCTYPE>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Pydoc: module src.build_logs.ci_server</title>
+<link rel="stylesheet" type="text/css" href="pydoc_data/_pydoc.css"></head><body>
+            <div style='float:left'>
+                Python 3.12.7 [main, GCC 11.2.0]<br>Linux-5.15.167.4-microsoft-standard-WSL2-x86_64-with-glibc2.35
+            </div>
+            <div style='float:right'>
+                <div style='text-align:center'>
+                  <a href="index.html">Module Index</a>
+                  : <a href="topics.html">Topics</a>
+                  : <a href="keywords.html">Keywords</a>
+                </div>
+                <div>
+                    <form action="get" style='display:inline;'>
+                      <input type=text name=key size=15>
+                      <input type=submit value="Get">
+                    </form>&nbsp;
+                    <form action="search" style='display:inline;'>
+                      <input type=text name=key size=15>
+                      <input type=submit value="Search">
+                    </form>
+                </div>
+            </div>
+            <div style="clear:both;padding-top:.5em;">
+<table class="heading">
+<tr class="heading-text decor">
+<td class="title">&nbsp;<br><strong class="title"><a href="src.html" class="white">src</a>.<a href="src.build_logs.html" class="white">build_logs</a>.ci_server</strong></td>
+<td class="extra"><a href=".">index</a><br><a href="file:/home/tsx/SEfund/Continuous-Integration/src/build_logs/ci_server.py">/home/tsx/SEfund/Continuous-Integration/src/build_logs/ci_server.py</a></td></tr></table>
+    <p></p>
+<p>
+<table class="section">
+<tr class="decor pkg-content-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Modules</strong></td></tr>
+    
+<tr><td class="decor pkg-content-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><table><tr><td class="multicolumn"><a href="json.html">json</a><br>
+</td><td class="multicolumn"><a href="os.html">os</a><br>
+</td><td class="multicolumn"><a href="random.html">random</a><br>
+</td><td class="multicolumn"></td></tr></table></td></tr></table><p>
+<table class="section">
+<tr class="decor functions-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Functions</strong></td></tr>
+    
+<tr><td class="decor functions-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><dl><dt><a name="-get_build_details"><strong>get_build_details</strong></a>(commit_id)</dt><dd><span class="code">Retrieve&nbsp;detailed&nbsp;build&nbsp;information&nbsp;for&nbsp;a&nbsp;given&nbsp;commit.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;commit_id&nbsp;(str):&nbsp;The&nbsp;commit&nbsp;identifier&nbsp;to&nbsp;look&nbsp;up&nbsp;in&nbsp;the&nbsp;build&nbsp;history.<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;A&nbsp;JSON&nbsp;response&nbsp;with&nbsp;the&nbsp;build&nbsp;details&nbsp;if&nbsp;found,&nbsp;or&nbsp;an&nbsp;error&nbsp;message&nbsp;with&nbsp;HTTP&nbsp;status&nbsp;404&nbsp;if&nbsp;not&nbsp;found.</span></dd></dl>
+ <dl><dt><a name="-get_build_history"><strong>get_build_history</strong></a>()</dt><dd><span class="code">Return&nbsp;list&nbsp;of&nbsp;all&nbsp;past&nbsp;builds.<br>
+&nbsp;<br>
+Retrieves&nbsp;the&nbsp;entire&nbsp;build&nbsp;history&nbsp;from&nbsp;a&nbsp;JSON&nbsp;file.<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;A&nbsp;JSON&nbsp;response&nbsp;containing&nbsp;a&nbsp;list&nbsp;of&nbsp;build&nbsp;records.</span></dd></dl>
+ <dl><dt><a name="-handle_request"><strong>handle_request</strong></a>()</dt><dd><span class="code">Webhook&nbsp;endpoint&nbsp;to&nbsp;trigger&nbsp;CI.<br>
+&nbsp;<br>
+Expects&nbsp;a&nbsp;JSON&nbsp;payload&nbsp;with&nbsp;a&nbsp;'head_commit'&nbsp;key&nbsp;containing&nbsp;commit&nbsp;information.<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;A&nbsp;JSON&nbsp;response&nbsp;containing&nbsp;a&nbsp;message,&nbsp;commit&nbsp;ID,&nbsp;and&nbsp;build&nbsp;status.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;If&nbsp;the&nbsp;payload&nbsp;is&nbsp;invalid,&nbsp;returns&nbsp;a&nbsp;plain&nbsp;text&nbsp;error&nbsp;message&nbsp;with&nbsp;HTTP&nbsp;status&nbsp;400.</span></dd></dl>
+ <dl><dt><a name="-load_build_history"><strong>load_build_history</strong></a>()</dt><dd><span class="code">Load&nbsp;build&nbsp;history&nbsp;from&nbsp;a&nbsp;JSON&nbsp;file,&nbsp;or&nbsp;return&nbsp;an&nbsp;empty&nbsp;list&nbsp;if&nbsp;the&nbsp;file&nbsp;does&nbsp;not&nbsp;exist&nbsp;or&nbsp;is&nbsp;invalid.<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;list:&nbsp;A&nbsp;list&nbsp;of&nbsp;build&nbsp;records.</span></dd></dl>
+ <dl><dt><a name="-save_build"><strong>save_build</strong></a>(commit_id, status, logs)</dt><dd><span class="code">Save&nbsp;a&nbsp;build&nbsp;result,&nbsp;ensuring&nbsp;only&nbsp;one&nbsp;build&nbsp;per&nbsp;commit.<br>
+&nbsp;<br>
+Updates&nbsp;the&nbsp;build&nbsp;history&nbsp;with&nbsp;the&nbsp;new&nbsp;build&nbsp;data&nbsp;and&nbsp;writes&nbsp;it&nbsp;to&nbsp;a&nbsp;JSON&nbsp;file.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;commit_id&nbsp;(str):&nbsp;The&nbsp;commit&nbsp;identifier&nbsp;associated&nbsp;with&nbsp;the&nbsp;build.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;status&nbsp;(str):&nbsp;The&nbsp;build&nbsp;status&nbsp;(e.g.,&nbsp;"success"&nbsp;or&nbsp;"failure").<br>
+&nbsp;&nbsp;&nbsp;&nbsp;logs&nbsp;(str):&nbsp;Log&nbsp;details&nbsp;from&nbsp;the&nbsp;CI&nbsp;process.</span></dd></dl>
+</td></tr></table><p>
