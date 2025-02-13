@@ -1,10 +1,10 @@
 import os
 from flask import Flask, request, jsonify
-from .ci_pipeline import run_ci_pipeline
-from .build_logs.ci_server import save_build, load_build_history
+from src.ci_pipeline import run_ci_pipeline
+from src.build_logs.ci_server import save_build, load_build_history
 from pyngrok import ngrok
 from dotenv import load_dotenv
-from .log import get_logs
+from src.log import get_logs
 
 dotenv_path = os.path.join(os.path.dirname(__file__), "auth.env")
 load_dotenv(dotenv_path)
