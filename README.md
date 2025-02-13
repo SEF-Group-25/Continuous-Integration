@@ -13,6 +13,9 @@ Make sure to do export environment variables:
 % export DISCORD_WEBHOOK_URL="(Your Discord Webhook)".
 ```
 
+## Notification Details
+The CI server changes the commit status to either "success" or "failure" with the description "CI Tool", using the GitHub API. It also sends a discord notification to a webhook specified by environment variables.
+
 ## Local webhook setup
 
 First create a Nrock account, get your authtoken and create a file named `auth.env` in `src` which only consists of `NGROK_AUTHTOKEN=[yourtoken]`. Make sure that this file is ignored and dosent get pushed.
@@ -77,3 +80,6 @@ This feature implements **build history storage** for the CI server. It ensures 
 * Shangxuan Tang
   * P2 - Testing
   * Set up ci workflow with logger and error handler
+
+ ## Python 
+ Version 3.13, but earlier will likely work.
