@@ -17,4 +17,4 @@ def test_run_test_failure():
         with pytest.raises(Exception, match="test: Test fails, check the logs"):
             run_test()
 
-        mock_run_command.assert_called_once_with("pytest tests/", TMP_DIR)
+        mock_run_command.assert_called_once_with("pytest test", TMP_DIR)
