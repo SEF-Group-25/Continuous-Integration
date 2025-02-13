@@ -5,11 +5,12 @@ from src.utils import run_command
 from config import TMP_DIR
 
 def prepare(repo_url, branch, commit_id):
-    """
-    Prepares the repo and dependencies specified by:
-    - repo_url
-    - branch
-    - commit_id
+    """Prepares the repo and dependencies for a specific commit of the repo. Raise an exception if fails.
+
+        Args:
+            repo_url (str): URL of the repo.
+            branch (str): The branch to be built.
+            commit_id (str): SHA of the commit.
     """
 
     if os.path.exists(TMP_DIR):

@@ -12,11 +12,15 @@ from src.notify import set_commit_status, discord_notify
 
 
 def run_ci_pipeline(repo_url, branch, commit_id):
-    """
-    The core of the CI server, build the repo specified by 
-    - repo_url
-    - branch
-    - commit_id
+    """Run the build pipeline for a specific commit of the repo
+    
+        Args：
+            repo_url (str): URL of the repo.
+            branch (str): The branch to be built.
+            commit_id (str): SHA of the commit.
+
+        Returns:
+            bool: True if the build is successful.
     """
 
     build_success = True

@@ -3,10 +3,11 @@ from datetime import datetime
 logs = []
 
 def log_command_result(command, result):
-    """
-    log the result from the executed command
-    - command - the executed command
-    - result - CompletedProcess[str], return value of subprocess.run
+    """Log the result of the executed command, stored in a list
+    
+        Args:
+            command (str): The executed command
+            result (CompletedProcess[str]): Return value of subprocess.run
     """
 
     log_entry = {
@@ -20,4 +21,6 @@ def log_command_result(command, result):
     logs.append(log_entry)
 
 def get_logs():
+    """Get the list of logs
+    """
     return logs
