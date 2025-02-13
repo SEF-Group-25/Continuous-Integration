@@ -34,8 +34,6 @@ def run_ci_pipeline(repo_url, branch, commit_id):
         set_commit_status(commit_id, "success")
         discord_notify(commit_id, "Success")
 
-
-    
     return build_success
 
 
