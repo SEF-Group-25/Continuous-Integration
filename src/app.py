@@ -24,6 +24,14 @@ print(f"\n Ngrok Tunnel URL: {public_url}\n")
 
 @app.route("/webhook", methods=["POST"])
 def webhook():
+    
+    """Respond to GitHub webhook events by triggering the CI pipeline.
+    Args:
+        None, but expects a JSON payload from GitHub.
+    Returns:
+        JSON response with a message and status code.
+    """
+    
     event_type = request.headers.get("X-GitHub-Event", "unknown")
     payload = request.get_json()
 
