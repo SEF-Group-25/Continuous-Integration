@@ -44,13 +44,13 @@
 <td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Functions</strong></td></tr>
     
 <tr><td class="decor functions-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
-<td class="singlecolumn"><dl><dt><a name="-discord_notify"><strong>discord_notify</strong></a>(commit_sha, result, webhook='https://discord.com/api/webhooks/1339237618877075479/mY5LBkzuMGdAFgWMtL_TDa-wcqtAS6m4u1hHkc52TTwBC1D8tvL4nz6mQ7jPgcBTIgTM')</dt><dd><span class="code">Sends&nbsp;a&nbsp;discord&nbsp;message&nbsp;to&nbsp;a&nbsp;specified&nbsp;webhook,&nbsp;informing&nbsp;about&nbsp;the&nbsp;result&nbsp;of&nbsp;a&nbsp;specific&nbsp;commit.<br>
+<td class="singlecolumn"><dl><dt><a name="-discord_notify"><strong>discord_notify</strong></a>(commit_sha, result, webhook='')</dt><dd><span class="code">Sends&nbsp;a&nbsp;discord&nbsp;message&nbsp;to&nbsp;a&nbsp;specified&nbsp;webhook,&nbsp;informing&nbsp;about&nbsp;the&nbsp;result&nbsp;of&nbsp;a&nbsp;specific&nbsp;commit.<br>
 &nbsp;<br>
 Args:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;commit_sha&nbsp;(str):&nbsp;The&nbsp;specified&nbsp;commit.<br>
 &nbsp;&nbsp;&nbsp;&nbsp;result&nbsp;(str):&nbsp;The&nbsp;status&nbsp;to&nbsp;be&nbsp;displayed.<br>
 &nbsp;&nbsp;&nbsp;&nbsp;webhook&nbsp;(str):&nbsp;Webhook&nbsp;for&nbsp;the&nbsp;specific&nbsp;channel&nbsp;where&nbsp;the&nbsp;message&nbsp;will&nbsp;be&nbsp;received.</span></dd></dl>
- <dl><dt><a name="-set_commit_status"><strong>set_commit_status</strong></a>(commit_sha, state='success', description='CI', REPO_OWNER='SEF-Group-25', REPO_NAME='Continuous-Integration', TOKEN='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')</dt><dd><span class="code">Sets&nbsp;the&nbsp;commit&nbsp;status&nbsp;of&nbsp;the&nbsp;specified&nbsp;commit&nbsp;to&nbsp;the&nbsp;specified&nbsp;state.<br>
+ <dl><dt><a name="-set_commit_status"><strong>set_commit_status</strong></a>(commit_sha, state='success', description='CI', REPO_OWNER='SEF-Group-25', REPO_NAME='Continuous-Integration', TOKEN='')</dt><dd><span class="code">Sets&nbsp;the&nbsp;commit&nbsp;status&nbsp;of&nbsp;the&nbsp;specified&nbsp;commit&nbsp;to&nbsp;the&nbsp;specified&nbsp;state.<br>
 &nbsp;<br>
 Args:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;commit_sha&nbsp;(str):&nbsp;The&nbsp;specified&nbsp;commit.<br>
