@@ -7,15 +7,8 @@ def run_command(command, run_dir=""):
 
     log_command_result(command, result)
 
-    # print(f"Output:\n{result.stdout}")
-    # print(f"Error:\n{result.stderr}")
-
     if result.returncode != 0:
         raise subprocess.CalledProcessError(
             returncode=result.returncode,
             cmd=command,
-            output=result.stdout,
-            stderr=result.stderr
         )
-
-    return result
