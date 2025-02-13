@@ -3,7 +3,11 @@ from datetime import datetime
 logs = []
 
 def log_command_result(command, result):
-    """log the result from the executed command"""
+    """
+    log the result from the executed command
+    - command - the executed command
+    - result - CompletedProcess[str], return value of subprocess.run
+    """
 
     log_entry = {
         "timestamp": datetime.now().isoformat(),

@@ -4,8 +4,13 @@ import shutil
 from src.utils import run_command
 from config import TMP_DIR
 
-# This function prepares environment for build
 def prepare(repo_url, branch, commit_id):
+    """
+    Prepares the repo and dependencies specified by:
+    - repo_url
+    - branch
+    - commit_id
+    """
 
     if os.path.exists(TMP_DIR):
         shutil.rmtree(TMP_DIR)

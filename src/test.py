@@ -7,6 +7,11 @@ from src.utils import run_command
 from config import TMP_DIR
 
 def run_test():
+    """
+    Run pytest to execute test cases under /tests
+    The result of pytest will be stored in the log
+    """
+
     try:
         run_command("pytest tests/", TMP_DIR)
 
